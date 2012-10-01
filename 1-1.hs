@@ -22,5 +22,5 @@ productAmount = filter constraint
     constraint = and . zipWith (<=) stock . map sum . transpose .
                  zipWith (\xs y -> map (* y) xs) useAmount 
 
-solve :: Int
-solve = maximum $ sum . zipWith (*) benefits <$> productAmount
+solve :: [[Int]]
+solve = filter ((== (maximum $ sum . zipWith (*) benefits <$> productAmount)) . sum . zipWith (*) benefits) productAmount
