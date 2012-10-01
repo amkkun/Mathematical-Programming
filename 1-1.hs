@@ -19,7 +19,7 @@ productAmount = filter constraint
   where
     maxAmount = minimum . zipWith div stock . filter (/= 0)
     maxAmounts = map maxAmount useAmount
-    constraint = and . zipWith (<=) stock . map sum . transpose .
+    constraint = and . zipWith (>=) stock . map sum . transpose .
                  zipWith (\xs y -> map (* y) xs) useAmount 
 
 solve :: [[Int]]
